@@ -2,7 +2,6 @@ package com.hellohasan.hasanerrafkhata
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -13,14 +12,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.hellohasan.hasanerrafkhata.ui.theme.HasanerRafkhataTheme
-import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
 
 class MainActivity : ComponentActivity(), DynamicModuleListener {
 
@@ -30,6 +26,7 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         dynamicModuleDownloadUtil = DynamicModuleDownloadUtil(baseContext, this)
 
         setContent {
@@ -53,7 +50,6 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
         logState.value += "Download button clicked\n"
         if (dynamicModuleDownloadUtil.isModuleDownloaded(TRANSLATION_DYNAMIC_MODULE)) {
             logState.value += "Module is already downloaded.\n"
-            Log.d(MainActivity::class.simpleName, "Module already downloaded")
             startTranslationActivity()
         } else {
             downloadDynamicModule()
@@ -70,35 +66,34 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
     }
 
     private fun downloadDynamicModule() {
-        Log.d(MainActivity::class.simpleName, "Call for downloaded")
         logState.value += "Call for download dynamic module. ${getCurrentTimestamp()}\n"
         dynamicModuleDownloadUtil.downloadDynamicModule(TRANSLATION_DYNAMIC_MODULE)
     }
 
     override fun onDownloading() {
-        Log.d(MainActivity::class.simpleName, "Module downloading started")
         logState.value += "Downloading... ${getCurrentTimestamp()}\n"
     }
 
     override fun onDownloadCompleted() {
-        Log.d(MainActivity::class.simpleName, "Module download completed")
         logState.value += "Module download completed. ${getCurrentTimestamp()}\n"
     }
 
     override fun onInstallSuccess() {
-        Log.d(MainActivity::class.simpleName, "Module install Success!")
         logState.value += "Module install Success! ${getCurrentTimestamp()}\n"
         startTranslationActivity()
     }
 
     override fun onFailed() {
-        Log.d(MainActivity::class.simpleName, "Module download or installation failed")
         logState.value += "Module download or installation failed. ${getCurrentTimestamp()}\n"
     }
 
-    private fun getCurrentTimestamp() : String {
+    private fun getCurrentTimestamp(): String {
         val calendar = Calendar.getInstance()
-        return "Time: ${calendar.get(Calendar.HOUR)}:${calendar.get(Calendar.MINUTE)}:${calendar.get(Calendar.SECOND)}"
+        return "Time: ${calendar.get(Calendar.HOUR)}:${calendar.get(Calendar.MINUTE)}:${
+            calendar.get(
+                Calendar.SECOND
+            )
+        }"
     }
 }
 
@@ -115,6 +110,6 @@ fun DynamicModuleDownloadButton(onClick: () -> Unit) {
 @Composable
 fun DynamicModuleDownloadButtonPreview() {
     HasanerRafkhataTheme {
-        DynamicModuleDownloadButton{}
+        DynamicModuleDownloadButton {}
     }
 }

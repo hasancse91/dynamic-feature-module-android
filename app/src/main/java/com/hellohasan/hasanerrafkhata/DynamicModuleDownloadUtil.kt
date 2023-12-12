@@ -9,11 +9,11 @@ import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListene
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 
 class DynamicModuleDownloadUtil(
-    private val context: Context,
+    context: Context,
     private val mDynamicDownloadListener: DynamicModuleListener
 ) {
 
-    lateinit var splitInstallManager: SplitInstallManager
+    private lateinit var splitInstallManager: SplitInstallManager
     private var mySessionId = 0
 
     init {
