@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Hasaner Rafkhata</string>
+    <string name="title_translationdynamicfeature">Translation</string>
+    <string name="title_activity_translation">TranslationActivity</string>
+</resources>
