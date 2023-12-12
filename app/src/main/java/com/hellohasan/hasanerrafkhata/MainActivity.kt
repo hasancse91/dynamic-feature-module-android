@@ -8,13 +8,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.hellohasan.hasanerrafkhata.ui.theme.HasanerRafkhataTheme
 import java.util.Calendar
 
@@ -35,21 +37,26 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
                 Column(
                     modifier = Modifier.fillMaxHeight().fillMaxWidth(),
                     verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     DynamicModuleDownloadButton {
                         openDynamicModuleFeature()
                     }
-                    Text(text = logState.value)
+                    LazyColumn {
+                        item {
+                            Text(
+                                text = logState.value,
+                                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+                            )
+                        }
+                    }
                 }
             }
         }
     }
 
     private fun openDynamicModuleFeature() {
-        logState.value += "Download button clicked\n"
         if (dynamicModuleDownloadUtil.isModuleDownloaded(TRANSLATION_DYNAMIC_MODULE)) {
-            logState.value += "Module is already downloaded.\n"
+            logState.value += "${getCurrentTimestamp()}: Module is already downloaded.\n"
             startTranslationActivity()
         } else {
             downloadDynamicModule()
@@ -66,34 +73,32 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
     }
 
     private fun downloadDynamicModule() {
-        logState.value += "Call for download dynamic module. ${getCurrentTimestamp()}\n"
+        logState.value += "${getCurrentTimestamp()}: Call for download.\n"
         dynamicModuleDownloadUtil.downloadDynamicModule(TRANSLATION_DYNAMIC_MODULE)
     }
 
     override fun onDownloading() {
-        logState.value += "Downloading... ${getCurrentTimestamp()}\n"
+        logState.value += "${getCurrentTimestamp()}: Downloading...\n"
     }
 
     override fun onDownloadCompleted() {
-        logState.value += "Module download completed. ${getCurrentTimestamp()}\n"
+        logState.value += "${getCurrentTimestamp()}: Module download completed.\n"
     }
 
     override fun onInstallSuccess() {
-        logState.value += "Module install Success! ${getCurrentTimestamp()}\n"
+        logState.value += "${getCurrentTimestamp()}: Module install Success!\n"
         startTranslationActivity()
     }
 
     override fun onFailed() {
-        logState.value += "Module download or installation failed. ${getCurrentTimestamp()}\n"
+        logState.value += "${getCurrentTimestamp()}: Module download or installation failed.\n"
     }
 
     private fun getCurrentTimestamp(): String {
         val calendar = Calendar.getInstance()
-        return "Time: ${calendar.get(Calendar.HOUR)}:${calendar.get(Calendar.MINUTE)}:${
-            calendar.get(
-                Calendar.SECOND
-            )
-        }"
+        return "${calendar.get(Calendar.HOUR).toString().padStart(2, '0')}:" +
+                "${calendar.get(Calendar.MINUTE).toString().padStart(2, '0')}:" +
+                calendar.get(Calendar.SECOND).toString().padStart(2, '0')
     }
 }
 
@@ -102,7 +107,7 @@ fun DynamicModuleDownloadButton(onClick: () -> Unit) {
     Button(
         onClick = onClick,
         content = { Text("Download Dynamic Feature Module") },
-        modifier = Modifier
+        modifier = Modifier.fillMaxWidth().padding(16.dp)
     )
 }
 
