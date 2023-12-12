@@ -2,6 +2,7 @@ plugins {
     id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
 }
+
 android {
     namespace = "com.hellohasan.translationdynamicfeature"
     compileSdk = 34
@@ -45,6 +46,7 @@ android {
 
 dependencies {
     implementation(project(":app"))
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.1")
@@ -60,8 +62,4 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-
-    // dynamic feature module
-    implementation("com.google.android.play:feature-delivery:2.0.0")
-    implementation("com.google.android.play:feature-delivery-ktx:2.0.0")
 }
