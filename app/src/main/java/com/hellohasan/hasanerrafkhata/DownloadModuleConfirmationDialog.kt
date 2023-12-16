@@ -1,4 +1,4 @@
-package com.hellohasan.hasanerrafkhata.ui
+package com.hellohasan.hasanerrafkhata
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.height
