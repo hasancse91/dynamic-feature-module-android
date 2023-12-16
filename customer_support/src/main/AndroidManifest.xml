@@ -4,7 +4,7 @@
 
     <dist:module
         dist:instant="false"
-        dist:title="@string/title_translationdynamicfeature">
+        dist:title="@string/title_customer_support">
         <dist:delivery>
             <dist:on-demand />
         </dist:delivery>
@@ -14,9 +14,9 @@
 
     <application>
         <activity
-            android:name=".TranslationActivity"
+            android:name=".CustomerSupportActivity"
             android:exported="false"
-            android:label="@string/title_activity_translation"
+            android:label="@string/title_activity_customer_support"
             android:theme="@style/Theme.HasanerRafkhata" />
     </application>
 

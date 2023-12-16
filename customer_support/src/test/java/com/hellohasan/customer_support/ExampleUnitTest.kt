@@ -1,4 +1,4 @@
-package com.hellohasan.translationdynamicfeature
+package com.hellohasan.customer_support
 
 import org.junit.Test
 
