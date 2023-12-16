@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hellohasan.translationdynamicfeature"
+    namespace = "com.hellohasan.customer_support"
     compileSdk = 34
 
     defaultConfig {

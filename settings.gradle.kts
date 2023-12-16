@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Hasaner Rafkhata"
 include(":app")
-include(":translationdynamicfeature")
+include(":customer_support")

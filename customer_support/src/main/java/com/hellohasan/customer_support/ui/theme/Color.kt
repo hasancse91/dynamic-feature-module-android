@@ -1,4 +1,4 @@
-package com.hellohasan.translationdynamicfeature.ui.theme
+package com.hellohasan.customer_support.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

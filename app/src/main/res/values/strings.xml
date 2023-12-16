@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Hasaner Rafkhata</string>
-    <string name="title_translationdynamicfeature">Translation</string>
-    <string name="title_activity_translation">TranslationActivity</string>
+    <string name="title_customer_support">Customer Support</string>
+    <string name="title_activity_customer_support">CustomerSupportActivity</string>
 </resources>
