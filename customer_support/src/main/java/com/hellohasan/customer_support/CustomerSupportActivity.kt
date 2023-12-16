@@ -91,8 +91,8 @@ fun CustomerSupportWidget() {
         Image(
             painterResource(R.drawable.baseline_support_agent_24),
             contentDescription = "customer support icon",
-            modifier = Modifier.height(120.dp).padding(top = 24.dp),
-            colorFilter = ColorFilter.tint(Color(0xFF43A047)),
+            modifier = Modifier.height(130.dp).padding(top = 24.dp),
+            colorFilter = ColorFilter.tint(Color(0xFF26A69A)),
             contentScale = ContentScale.FillHeight
         )
     }

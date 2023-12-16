@@ -33,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.hellohasan.hasanerrafkhata.ui.DownloadModuleConfirmationDialog
 import com.hellohasan.hasanerrafkhata.ui.theme.HasanerRafkhataTheme
 import java.util.Calendar
 
@@ -41,6 +42,7 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
     private val CUSTOMER_SUPPORT_DYNAMIC_MODULE = "customer_support"
     private lateinit var dynamicModuleDownloadUtil: DynamicModuleDownloadUtil
     private var logState = mutableStateOf("Activity Log:\n")
+    private var dialogState = mutableStateOf(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,17 +78,19 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
                             )
                         }
                     }
+                    DownloadModuleConfirmationDialog(dialogState, ::downloadDynamicModule)
                 }
             }
         }
     }
+
 
     private fun openDynamicModuleFeature() {
         if (dynamicModuleDownloadUtil.isModuleDownloaded(CUSTOMER_SUPPORT_DYNAMIC_MODULE)) {
             logState.value += "${getCurrentTimestamp()}: Module is already downloaded.\n"
             startTranslationActivity()
         } else {
-            downloadDynamicModule()
+            dialogState.value = true
         }
     }
 
