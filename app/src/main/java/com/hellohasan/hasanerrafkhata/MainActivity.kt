@@ -67,7 +67,7 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
                         style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
                     )
                     DynamicModuleDownloadButton {
-                        openDynamicModuleFeature()
+                        openCustomerSupportFeature()
                     }
                     LazyColumn {
                         item {
@@ -84,16 +84,16 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
     }
 
 
-    private fun openDynamicModuleFeature() {
+    private fun openCustomerSupportFeature() {
         if (dynamicModuleDownloadUtil.isModuleDownloaded(CUSTOMER_SUPPORT_DYNAMIC_MODULE)) {
             logState.value += "${getCurrentTimestamp()}: Module is already downloaded.\n"
-            startTranslationActivity()
+            startCustomerSupportActivity()
         } else {
             dialogState.value = true
         }
     }
 
-    private fun startTranslationActivity() {
+    private fun startCustomerSupportActivity() {
         val intent = Intent()
         intent.setClassName(
             "com.hellohasan.hasanerrafkhata",
@@ -117,7 +117,7 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
 
     override fun onInstallSuccess() {
         logState.value += "${getCurrentTimestamp()}: Module install Success!\n"
-        startTranslationActivity()
+        startCustomerSupportActivity()
     }
 
     override fun onFailed() {
@@ -129,34 +129,5 @@ class MainActivity : ComponentActivity(), DynamicModuleListener {
         return "${calendar.get(Calendar.HOUR).toString().padStart(2, '0')}:" +
                 "${calendar.get(Calendar.MINUTE).toString().padStart(2, '0')}:" +
                 calendar.get(Calendar.SECOND).toString().padStart(2, '0')
-    }
-}
-
-@Composable
-fun DynamicModuleDownloadButton(onClick: () -> Unit) {
-    IconButton(
-        onClick = onClick,
-        modifier = Modifier.fillMaxWidth()
-            .padding(16.dp)
-            .clip(CircleShape)
-            .background(colorScheme.primary),
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                painter = painterResource(R.drawable.baseline_support_agent_24),
-                "Customer Support",
-                tint = Color.White
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("Customer Support", style = TextStyle(color = Color.White, fontSize = 16.sp))
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DynamicModuleDownloadButtonPreview() {
-    HasanerRafkhataTheme {
-        DynamicModuleDownloadButton {}
     }
 }
