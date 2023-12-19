@@ -10,14 +10,11 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.hellohasan.hasanerrafkhata.R
 
 @Composable
-fun DownloadModuleConfirmationDialog(
-    dialogState: MutableState<Boolean>,
-    onClickConfirm: () -> Unit
-) {
-    if (!dialogState.value) return
+fun DownloadModuleConfirmationDialog(state: MutableState<Boolean>, onClickConfirm: () -> Unit) {
+
+    if (!state.value) return
 
     AlertDialog(
         icon = {
@@ -29,12 +26,12 @@ fun DownloadModuleConfirmationDialog(
         },
         title = { Text("Download Customer Support Module") },
         text = { Text("Your requested customer support module need to be downloaded from Google Play Store. Download size is about 18 MB.") },
-        onDismissRequest = { dialogState.value = false },
+        onDismissRequest = { state.value = false },
         confirmButton = {
             TextButton(
                 onClick = {
                     onClickConfirm.invoke()
-                    dialogState.value = false
+                    state.value = false
                 }
             ) {
                 Text("Download")
@@ -42,7 +39,7 @@ fun DownloadModuleConfirmationDialog(
         },
         dismissButton = {
             TextButton(
-                onClick = { dialogState.value = false }
+                onClick = { state.value = false }
             ) {
                 Text("Cancel")
             }
