@@ -1,6 +1,10 @@
 # Dynamic Feature Modules in Android: On-Demand Feature Delivery
 This project demonstrates the implementation of Dynamic Feature Modules (DFMs) in Android for on-demand feature delivery. Dynamic Feature Modules allow you to modularize your Android app, delivering features to users only when they are needed. This reduces the initial install size, optimizes storage, and provides a more tailored user experience.
 
+### Tutorials
+- [Blog post in English](https://medium.com/@hasan.cse91/mastering-android-dynamic-feature-module-delivery-1-3-3cf08afd1e42)
+- [Video tutorial in Bengali](https://learning.megaminds.technology/courses/android-dynamic-feature-delivery/details)
+
 [![Android on demand dynamic feature module delivery tutorial](https://github.com/hasancse91/dynamic-feature-module-android/assets/3769029/bdcfa677-9429-406f-b4af-c3f5ccb8e315)](https://youtu.be/p_Slte2zyYc)
 
 ## Features
