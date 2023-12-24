@@ -5,6 +5,7 @@ This project demonstrates the implementation of Dynamic Feature Modules (DFMs) i
 - [Blog post in English](https://medium.com/@hasan.cse91/mastering-android-dynamic-feature-module-delivery-1-3-3cf08afd1e42)
 - [Video tutorial in Bengali](https://learning.megaminds.technology/courses/android-dynamic-feature-delivery/details)
 
+## Demo Video
 [![Android on demand dynamic feature module delivery tutorial](https://github.com/hasancse91/dynamic-feature-module-android/assets/3769029/bdcfa677-9429-406f-b4af-c3f5ccb8e315)](https://youtu.be/p_Slte2zyYc)
 
 ## Features
